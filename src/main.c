@@ -12,17 +12,17 @@
 #include "timer.h"
 
 int x = 34, y = 12;
-int incX = 1, incY = 1;
+int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY)
 {
     screenSetColor(CYAN, DARKGRAY);
     screenGotoxy(x, y);
-    printf("           ");
+    printf(" ");
     x = nextX;
     y = nextY;
     screenGotoxy(x, y);
-    printf("Hello World");
+    printf("■");
 }
 
 void printKey(int ch)
@@ -46,6 +46,7 @@ void printKey(int ch)
 
 int main() 
 {
+    int nextX, nextY;
     static int ch = 0;
 
     screenInit(1);
@@ -55,29 +56,35 @@ int main()
     printHello(x, y);
     screenUpdate();
 
-    while (ch != 10) //enter
-    {
-        // Handle user input
-        if (keyhit()) 
-        {
-            ch = readch();
-            printKey(ch);
-            screenUpdate();
+    while(ch != 10){
+        nextX = x;
+        nextY = y;
+
+        if(keyhit()){
+            ch = getchar();
+
+            switch(ch){
+                case 119:
+                    nextY = y - incY;
+                    break;
+
+                case 115:
+                    nextY = y + incY;
+                    break;
+
+                case 97:
+                    nextX = x - incX;
+                    break;
+
+                case 100:
+                    nextX = x + incX;
+                    break;
+            }
         }
 
-        // Update game state (move elements, verify collision, etc)
-        if (timerTimeOver() == 1)
-        {
-            int newX = x + incX;
-            if (newX >= (MAXX -strlen("Hello World") -1) || newX <= MINX+1) incX = -incX;
-            int newY = y + incY;
-            if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
-
-            printKey(ch);
-            printHello(newX, newY);
-
-            screenUpdate();
-        }
+        printHello(nextX, nextY);
+        screenUpdate();
+        
     }
 
     keyboardDestroy();
