@@ -14,16 +14,18 @@
 int x = 34, y = 12;
 int incX = 2, incY = 1;
 
-void printHello(int nextX, int nextY)
-{
-    screenSetColor(CYAN, DARKGRAY);
-    screenGotoxy(x, y);
-    printf(" ");
-    x = nextX;
-    y = nextY;
-    screenGotoxy(x, y);
-    printf("■");
+void printHello(int nextX, int nextY){
+    if (nextX >= MINX + 1 && nextX <= MAXX - 1 && nextY >= MINY + 1 && nextY <= MAXY - 1) {
+        screenSetColor(CYAN, DARKGRAY);
+        screenGotoxy(x, y);
+        printf(" ");
+        x = nextX;
+        y = nextY;
+        screenGotoxy(x, y);
+        printf("■");
+    }
 }
+
 
 void printKey(int ch)
 {
