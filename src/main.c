@@ -16,9 +16,8 @@ int x = 34, y = 12;
 int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY){
-    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 3 && nextY <= MAX_Y) {
-        //MIN_Y + 3 não por causa da posição da matriz, mas a posição do cursor da função
-        //screenGotoxy
+    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 1 && nextY <= MAX_Y-2) {
+        
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
         printf(" ");

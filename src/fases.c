@@ -27,6 +27,8 @@ void printFase1(){
     matriz1[MAX_Y/2][MAX_X-1] = ' ';
     matriz1[(MAX_Y/2) + 1][MAX_X-1] = ' ';
 
+    screenClear();
+
 
     for(int i = MIN_Y; i < MAX_Y; i++){
         for(int j = MIN_X; j < MAX_X; j++){
