@@ -6,6 +6,7 @@
 */
 
 #include "screen.h"
+#include "fases.h"
 
 void screenDrawBorders() 
 {
@@ -67,8 +68,8 @@ void screenDestroy()
 
 void screenGotoxy(int x, int y)
 {
-    x = ( x<0 ? 0 : x>=MAXX ? MAXX-1 : x);
-    y = ( y<0 ? 0 : y>MAXY ? MAXY : y);
+    x = ( x<0 ? 0 : x>=MAX_X ? MAX_X-1 : x);
+    y = ( y<0 ? 0 : y>MAX_Y ? MAX_Y : y);
     
     printf("%s[f%s[%dB%s[%dC", ESC, ESC, y, ESC, x);
 }

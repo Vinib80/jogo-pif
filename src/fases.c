@@ -1,9 +1,7 @@
 #include <stdio.h>
+#include "screen.h"
+#include "fases.h"
 
-#define MIN_Y  0
-#define MAX_Y  24
-#define MIN_X  0
-#define MAX_X  100
 
 
 void printFase1(){
@@ -36,12 +34,8 @@ void printFase1(){
         }
         printf("\n");
     }
+    screenHomeCursor();
+    screenHideCursor();
 
 }
 
-
-int main(){
-    printFase1();
-    
-    return 0;
-}

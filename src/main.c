@@ -10,12 +10,15 @@
 #include "screen.h"
 #include "keyboard.h"
 #include "timer.h"
+#include "fases.h"
 
 int x = 34, y = 12;
 int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY){
-    if (nextX >= MINX + 1 && nextX <= MAXX - 1 && nextY >= MINY + 1 && nextY <= MAXY - 1) {
+    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 3 && nextY <= MAX_Y) {
+        //MIN_Y + 3 não por causa da posição da matriz, mas a posição do cursor da função
+        //screenGotoxy
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
         printf(" ");
@@ -27,31 +30,13 @@ void printHello(int nextX, int nextY){
 }
 
 
-void printKey(int ch)
-{
-    screenSetColor(YELLOW, DARKGRAY);
-    screenGotoxy(35, 22);
-    printf("Key code :");
-
-    screenGotoxy(34, 23);
-    printf("            ");
-    
-    if (ch == 27) screenGotoxy(36, 23);
-    else screenGotoxy(39, 23);
-
-    printf("%d ", ch);
-    while (keyhit())
-    {
-        printf("%d ", readch());
-    }
-}
 
 int main() 
 {
     int nextX, nextY;
     static int ch = 0;
 
-    screenInit(1);
+    printFase1();
     keyboardInit();
     timerInit(50);
 
