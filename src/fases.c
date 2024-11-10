@@ -11,11 +11,11 @@ void printFase1(){
         for(int j = MIN_X; j < MAX_X; j++){
             if(i == 0){
                 matriz1[i][j] = '#';
-            } else if(i == 23){
+            } else if(i == MAX_Y-1){
                 matriz1[i][j] = '#';
             } else if(j == 0){
                  matriz1[i][j] = '#';
-            } else if(j == 99){
+            } else if(j == MAX_X-1){
                  matriz1[i][j] = '#';
             } else {
                  matriz1[i][j] = ' ';
