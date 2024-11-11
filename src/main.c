@@ -12,11 +12,13 @@
 #include "timer.h"
 #include "fases.h"
 
-int x = 34, y = 12;
+char matriz1[MAX_Y][MAX_X];
+
+int x = 3, y = 8;
 int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY){
-    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 1 && nextY <= MAX_Y-2) {
+    if (matriz1[nextY][nextX] != '#' && nextX > MIN_X) {
         
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
@@ -29,9 +31,7 @@ void printHello(int nextX, int nextY){
 }
 
 
-
-int main() 
-{
+int main() {
     int nextX, nextY;
     static int ch = 0;
 
