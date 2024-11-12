@@ -18,7 +18,7 @@ int x = 3, y = 8;
 int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY){
-    if (matriz1[nextY][nextX] != '#' && nextX > MIN_X) {
+    if (matriz1[nextY][nextX] != '#' && nextX > MIN_X && nextX < MAX_X) {
         
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
