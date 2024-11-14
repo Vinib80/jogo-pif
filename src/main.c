@@ -12,7 +12,6 @@ int incX = 2, incY = 1;
 void printHello(int nextX, int nextY){
     if (matriz1[nextY][nextX] != '#' && nextX > MIN_X && nextX < MAX_X) {
         
-        // Atualizando a posição
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
         printf(" ");
@@ -22,8 +21,6 @@ void printHello(int nextX, int nextY){
         printf("■");
 
         //coordenadas
-        printf("Posição atual: x = %d, y = %d\n", x, y);
-
         if (x == 79 && (y >= 6 && y <= 9)) {
             screenGotoxy(x, y);
             printf("Parabéns!\n");
