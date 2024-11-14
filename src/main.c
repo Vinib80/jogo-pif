@@ -1,10 +1,3 @@
-/**
- * main.h
- * Created on Aug, 23th 2023
- * Author: Tiago Barros
- * Based on "From C to C++ course - 2002"
-*/
-
 #include <string.h>
 
 #include "screen.h"
@@ -16,7 +9,7 @@ int x = 34, y = 12;
 int incX = 2, incY = 1;
 
 void printHello(int nextX, int nextY){
-    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 1 && nextY <= MAX_Y-2) {
+    if (nextX >= MIN_X + 1 && nextX <= MAX_X - 1 && nextY >= MIN_Y + 1 && nextY <= MAX_Y - 2) {
         
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
@@ -25,10 +18,11 @@ void printHello(int nextX, int nextY){
         y = nextY;
         screenGotoxy(x, y);
         printf("■");
+        
+        //coordenadas
+        printf("Posição atual: x = %d, y = %d\n", x, y);
     }
 }
-
-
 
 int main() 
 {
@@ -70,7 +64,6 @@ int main()
 
         printHello(nextX, nextY);
         screenUpdate();
-        
     }
 
     keyboardDestroy();
