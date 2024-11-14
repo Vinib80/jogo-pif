@@ -1,5 +1,5 @@
 #include <stdio.h>
 
-int main(void){
-printf("Hello World!");
+void fase() {
+    printf("Hello World!\n");
 }
