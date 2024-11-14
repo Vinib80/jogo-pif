@@ -6,3 +6,5 @@
 #define MAX_X  80
 
 void printFase1();
+
+extern char matriz1[MAX_Y][MAX_X];

@@ -5,7 +5,6 @@
 
 
 void printFase1(){
-    char matriz1[MAX_Y][MAX_X];
 
     for(int i = MIN_Y; i < MAX_Y; i++){ //funcao para preencher a matriz
         for(int j = MIN_X; j < MAX_X; j++){

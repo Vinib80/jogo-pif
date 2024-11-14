@@ -49,6 +49,7 @@
 modules.order
 Module.symvers
 Mkfile.old
+dkms.conf
 
-#vs code
+# Pasta do VS Code
 .vscode
