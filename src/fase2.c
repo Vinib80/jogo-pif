@@ -3,9 +3,18 @@
 #include "timer.h"
 
 void inicioFase2() {
-    //codigo...
+    // Limpa a tela e configura a cor
     screenClear();
     screenSetColor(GREEN, DARKGRAY);
+    
+    // Define a posição do cursor
     screenGotoxy(5, 5);
-    printf("Parabéns!\n");
+
+    // Imprime o texto com as quebras de linha e escapes necessários
+    printf("\n      ██╗░░░██╗░█████╗░██╗░░░██╗  ░██╗░░░░░░░██╗░█████╗░███╗░░██╗   ██╗██╗\n");
+    printf("      ╚██╗░██╔╝██╔══██╗██║░░░██║  ░██║░░██╗░░██║██╔══██╗████╗░██║   ██║██║\n");
+    printf("      ░╚████╔╝░██║░░██║██║░░░██║  ░╚██╗████╗██╔╝██║░░██║██╔██╗██║   ██║██║\n");
+    printf("      ░░╚██╔╝░░██║░░██║██║░░░██║  ░░████╔═████║░██║░░██║██║╚████║   ╚═╝╚═╝\n");
+    printf("      ░░░██║░░░╚█████╔╝╚██████╔╝  ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░╚███║   ██╗██╗\n");
+    printf("      ░░░╚═╝░░░░╚════╝░░╚═════╝░  ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚══╝   ╚═╝╚═╝\n");
 }
