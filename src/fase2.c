@@ -1,5 +1,11 @@
-#include <stdio.h>
+#include "screen.h"
+#include "keyboard.h"
+#include "timer.h"
 
-void fase() {
-    printf("Hello World!\n");
+void inicioFase2() {
+    //codigo...
+    screenClear();
+    screenSetColor(GREEN, DARKGRAY);
+    screenGotoxy(5, 5);
+    printf("Parabéns!\n");
 }
