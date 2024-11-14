@@ -6,19 +6,22 @@
 */
 
 #include <string.h>
+#include <stdlib.h>
 
 #include "screen.h"
 #include "keyboard.h"
 #include "timer.h"
 #include "fases.h"
 
-char matriz1[MAX_Y][MAX_X];
 
 int x = 3, y = 8;
 int incX = 2, incY = 1;
 
-void printHello(int nextX, int nextY){
-    if (matriz1[nextY][nextX] != '#' && nextX > MIN_X && nextX < MAX_X) {
+TamanhoF fase1;
+char **matriz1;
+
+void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
+    if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
         
         screenSetColor(CYAN, DARKGRAY);
         screenGotoxy(x, y);
@@ -39,7 +42,7 @@ int main() {
     keyboardInit();
     timerInit(50);
 
-    printHello(x, y);
+    printHello(x, y, fase1.minX, fase1.maxX, matriz1);
     screenUpdate();
 
     while(ch != 10){
@@ -68,10 +71,16 @@ int main() {
             }
         }
 
-        printHello(nextX, nextY);
+        printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
         screenUpdate();
+
         
     }
+
+    for(int i = 0; i < fase1.maxY; i++){
+        free(matriz1[i]);
+    }
+    free(matriz1);
 
     keyboardDestroy();
     screenDestroy();

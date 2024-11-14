@@ -68,8 +68,8 @@ void screenDestroy()
 
 void screenGotoxy(int x, int y)
 {
-    x = ( x<0 ? 0 : x>=MAX_X ? MAX_X-1 : x);
-    y = ( y<0 ? 0 : y>MAX_Y ? MAX_Y : y);
+    x = ( x<0 ? 0 : x>=fase1.maxX ? fase1.maxX : x);
+    y = ( y<0 ? 0 : y>fase1.maxY ? fase1.maxY : y);
     
     printf("%s[f%s[%dB%s[%dC", ESC, ESC, y, ESC, x);
 }

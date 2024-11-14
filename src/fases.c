@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "screen.h"
 #include "fases.h"
 
@@ -6,31 +7,43 @@
 
 void printFase1(){
 
-    for(int i = MIN_Y; i < MAX_Y; i++){ //funcao para preencher a matriz
-        for(int j = MIN_X; j < MAX_X; j++){
+    
+    fase1.minY = 0;
+    fase1.maxY = 16;
+    fase1.minX = 0;
+    fase1.maxX = 80; //as dimensões da fase 1
+
+    matriz1 = (char **)malloc(fase1.maxY*sizeof(char *));
+
+    for(int i = 0; i < fase1.maxY; i++){
+        matriz1[i] = (char *)malloc(fase1.maxX*sizeof(char));
+    }
+
+    for(int i = fase1.minY; i < fase1.maxY; i++){ //funcao para preencher a matriz
+        for(int j = fase1.minX; j < fase1.maxX; j++){
             if(i == 0){
                 matriz1[i][j] = '#';
-            } else if(i == MAX_Y-1){
+            } else if(i == fase1.maxY-1){
                 matriz1[i][j] = '#';
             } else if(j == 0){
                  matriz1[i][j] = '#';
-            } else if(j == MAX_X-1){
+            } else if(j == fase1.maxX-1){
                  matriz1[i][j] = '#';
             } else {
                  matriz1[i][j] = ' ';
             }
         }
     }
-    matriz1[(MAX_Y/2) - 2][MAX_X-1] = ' ';
-    matriz1[(MAX_Y/2) - 1][MAX_X-1] = ' ';
-    matriz1[MAX_Y/2][MAX_X-1] = ' ';
-    matriz1[(MAX_Y/2) + 1][MAX_X-1] = ' ';
+    matriz1[(fase1.maxY/2) - 2][fase1.maxX-1] = ' ';
+    matriz1[(fase1.maxY/2) - 1][fase1.maxX-1] = ' ';
+    matriz1[fase1.maxY/2][fase1.maxX-1] = ' ';
+    matriz1[(fase1.maxY/2) + 1][fase1.maxX-1] = ' ';
 
     screenClear();
 
 
-    for(int i = MIN_Y; i < MAX_Y; i++){
-        for(int j = MIN_X; j < MAX_X; j++){
+    for(int i = fase1.minY; i < fase1.maxY; i++){
+        for(int j = fase1.minX; j < fase1.maxX; j++){
             printf("%c", matriz1[i][j]);
         }
         printf("\n");
