@@ -1,3 +1,6 @@
+#ifndef FASES_H
+#define FASES_H
+
 #include <stdio.h>
 
 typedef struct {
@@ -17,3 +20,5 @@ extern char **matriz1;
 
 
 void printFase1();
+
+#endif 

@@ -1,5 +1,8 @@
+#ifndef BALLS_H
+#define BALLS_H
+
 #include <stdio.h>
-#include "fases.h" 
+#include "fases.h"
 
 struct bola {
     int bolaX;
@@ -8,5 +11,9 @@ struct bola {
 };
 
 extern struct bola *bolas;
+extern const int numBolas;
 
-extern struct TamanhoF fase1;
+void PosicaoBolas();
+void printBolas();
+
+#endif
