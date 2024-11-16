@@ -11,7 +11,7 @@ const int numBolasB = 6;
 
 void posicaoBolasT(){
     
-    bolasTopo = malloc(numBolasT * sizeof(struct bola));
+    bolasTopo =(struct bola *) malloc(numBolasT * sizeof(struct bola));
 
     for(int i = 0; i < numBolasT; i++){
         bolasTopo[i].bolaX = 10 + (i * 10);
@@ -35,11 +35,11 @@ void printBolasT(){
 
 void posicaoBolasB(){
 
-    bolasBaixo = malloc(numBolasB * sizeof(struct bola));
+    bolasBaixo = (struct bola *)malloc(numBolasB * sizeof(struct bola));
 
     for(int i = 0; i < numBolasB; i++){
         bolasBaixo[i].bolaX = 15 + (i * 10);
-        bolasBaixo[i].bolaY = fase1.minY - 1.2;
+        bolasBaixo[i].bolaY = fase1.maxY - 2;
     }
 }
 
@@ -47,11 +47,12 @@ void printBolasB(){
     for(int i = 0; i < numBolasB; i++){
         int nextY = bolasBaixo[i].bolaY;
 
+        
         if(nextY >= fase1.minY && nextY < fase1.maxY&& matriz1[nextY][bolasBaixo[i].bolaX] != '#'){
             screenSetColor(BLUE, DARKGRAY);
-            screenGotoxy(bolasTopo[i].bolaX, bolasTopo[i].bolaY);
+            screenGotoxy(bolasBaixo[i].bolaX, bolasBaixo[i].bolaY);
             printf(" ");
-            screenGotoxy(bolasTopo[i].bolaX, bolasTopo[i].bolaY);
+            screenGotoxy(bolasBaixo[i].bolaX, bolasBaixo[i].bolaY);
             printf("●");
         }
     }
