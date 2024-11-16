@@ -47,7 +47,7 @@ void printBolasB(){
     for(int i = 0; i < numBolasB; i++){
         int nextY = bolasBaixo[i].bolaY;
 
-        if(matriz1[nextY][bolasBaixo[i].bolaX] != '#' && nextY >= fase1.minY && nextY < fase1.maxY){
+        if(nextY >= fase1.minY && nextY < fase1.maxY&& matriz1[nextY][bolasBaixo[i].bolaX] != '#'){
             screenSetColor(BLUE, DARKGRAY);
             screenGotoxy(bolasTopo[i].bolaX, bolasTopo[i].bolaY);
             printf(" ");
