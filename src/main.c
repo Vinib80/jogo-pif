@@ -16,13 +16,6 @@
 
 int x = 3, y = 8;
 int incX = 2, incY = 1;
-/*int bolaX = 10; 
-int bolaY = 0;
-int bolaincY = 1;*/
-
-//TamanhoF fase1;
-//char **matriz1;
-
 
 void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
@@ -37,32 +30,19 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     }
 }
 
-/*void printBola(){
-    int nextY = bolaY + bolaincY;
-
-    if (matriz1[nextY][bolaX] != '#' && nextY >= fase1.minY && nextY < fase1.maxY) {
-        
-        screenSetColor(BLUE, DARKGRAY);
-        screenGotoxy(bolaX, bolaY);
-        printf(" ");
-        bolaY = nextY;
-        screenGotoxy(bolaX, bolaY);
-        printf("●");
-    }
-}*/
-
-
 int main() {
     int nextX, nextY;
     static int ch = 0;
 
     printFase1();
-    PosicaoBolas();
+    posicaoBolasT();
+    posicaoBolasB();
     keyboardInit();
     timerInit(50);
 
     printHello(x, y, fase1.minX, fase1.maxX, matriz1);
-    printBolas();
+    printBolasT();
+    printBolasB();
     screenUpdate();
 
     while(ch != 10){
@@ -92,7 +72,8 @@ int main() {
         }
 
         printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
-        printBolas();
+        printBolasT();
+        printBolasB();
         screenUpdate();
 
         
@@ -102,7 +83,6 @@ int main() {
         free(matriz1[i]);
     }
     free(matriz1);
-    free(bolas);
 
     keyboardDestroy();
     screenDestroy();

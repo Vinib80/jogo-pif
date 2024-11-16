@@ -10,10 +10,15 @@ struct bola {
     int bolaincY;
 };
 
-extern struct bola *bolas;
-extern const int numBolas;
+extern struct bola *bolasTopo;
+extern struct bola *bolasBaixo;
 
-void PosicaoBolas();
-void printBolas();
+extern const int numBolasT;
+extern const int numBolasB;
+
+void posicaoBolasT();
+void printBolasT();
+void posicaoBolasB();
+void printBolasB();
 
 #endif
