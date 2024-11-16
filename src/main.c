@@ -23,7 +23,7 @@ char **matriz1;
 void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
         
-        screenSetColor(CYAN, DARKGRAY);
+        screenSetColor(RED, DARKGRAY);
         screenGotoxy(x, y);
         printf(" ");
         x = nextX;

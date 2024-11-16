@@ -48,8 +48,18 @@ void printFase1(){
         }
         printf("\n");
     }
+
+    screenGotoxy(0, 16);
+
+    mortes();
+
     screenHomeCursor();
     screenHideCursor();
+    
 
 }
 
+void mortes(){
+    screenSetColor(RED, DARKGRAY);
+    printf("Mortes: 0");
+}
