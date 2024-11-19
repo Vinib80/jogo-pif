@@ -1,10 +1,3 @@
-/**
- * main.h
- * Created on Aug, 23th 2023
- * Author: Tiago Barros
- * Based on "From C to C++ course - 2002"
-*/
-
 #include <string.h>
 #include <stdlib.h>
 
@@ -12,7 +5,7 @@
 #include "keyboard.h"
 #include "timer.h"
 #include "fases.h"
-
+#include "fase2.h" 
 
 int x = 3, y = 8;
 int incX = 2, incY = 1;
@@ -30,10 +23,17 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
         y = nextY;
         screenGotoxy(x, y);
         printf("■");
+
+        //coordenadas
+        if (x == 79 && (y >= 6 && y <= 9)) {
+            screenGotoxy(x, y);
+            printf("Parabéns!\n");
+
+            //chama a função de fase2.c
+            inicioFase2();
+        }
     }
 }
-
-
 int main() {
     int nextX, nextY;
     static int ch = 0;
@@ -53,11 +53,11 @@ int main() {
             ch = getchar();
 
             switch(ch){
-                case 119:
+                case 119: 
                     nextY = y - incY;
                     break;
 
-                case 115:
+                case 115: 
                     nextY = y + incY;
                     break;
 
@@ -65,7 +65,7 @@ int main() {
                     nextX = x - incX;
                     break;
 
-                case 100:
+                case 100: 
                     nextX = x + incX;
                     break;
             }
