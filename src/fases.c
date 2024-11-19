@@ -49,9 +49,6 @@ void printFase1(){
         printf("\n");
     }
 
-    screenGotoxy(0, 16);
-
-    mortes();
 
     screenHomeCursor();
     screenHideCursor();
@@ -60,6 +57,7 @@ void printFase1(){
 }
 
 void mortes(){
+    screenGotoxy(0, 16);
     screenSetColor(RED, DARKGRAY);
     printf("Mortes: 0");
 }

@@ -9,7 +9,9 @@
 #include "fase2.h"
 
 int x = 3, y = 8;
-int incX = 2, incY = 1;
+int incX = 1, incY = 1;
+int cont_mortes = 0;
+
 
 void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
@@ -22,16 +24,55 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
         screenGotoxy(x, y);
         printf("■");
 
-        //coordenadas
-        
     }
 }
+
+void resetar(){
+    x = 3;
+    y = 8;
+
+    for(int i = 0; i < numBolasT; i++){
+        bolasTopo[i].bolaY = 1;
+        screenGotoxy(bolasTopo[i].bolaX, bolasTopo[i].bolaY);
+        printf(" ");
+    }
+    
+    for(int i = 0; i < numBolasB; i++){
+        bolasBaixo[i].bolaY = 14;
+        screenGotoxy(bolasBaixo[i].bolaX, bolasBaixo[i].bolaY);
+        printf(" ");
+    }
+
+    printHello(x, y, fase1.minX, fase1.maxX, matriz1);
+    printBolasT();
+    printBolasB();
+    cont_mortes++;
+}
+
+int colisao(){
+    for(int i = 0; i < numBolasT; i++){
+        if(bolasTopo[i].bolaX == x && bolasTopo[i].bolaY == y){
+            return 1;
+        }
+    }
+    
+    for(int i = 0; i < numBolasB; i++){
+        if(bolasBaixo[i].bolaX == x && bolasBaixo[i].bolaY == y){
+            return 1;
+        }
+    }
+
+    return 0;
+
+}
+
 int main() {
     int nextX, nextY;
     static int ch = 0;
     static long timer = 0;
 
     printFase1();
+    mortes();
     posicaoBolasT();
     posicaoBolasB();
     screenUpdate();
@@ -84,6 +125,10 @@ int main() {
         }
 
         if(timerTimeOver() == 1){
+            if(colisao()){
+                resetar();
+                screenUpdate();
+            }
             printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
             printBolasT();
             printBolasB();
