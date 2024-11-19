@@ -33,10 +33,12 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
 int main() {
     int nextX, nextY;
     static int ch = 0;
+    static long timer = 0;
 
     printFase1();
     posicaoBolasT();
     posicaoBolasB();
+    screenUpdate();
     keyboardInit();
     timerInit(50);
 
@@ -45,7 +47,8 @@ int main() {
     printBolasB();
     screenUpdate();
 
-    while(ch != 10){
+
+    while(ch != 10 && timer <= 100){
         nextX = x;
         nextY = y;
 
@@ -69,12 +72,19 @@ int main() {
                     nextX = x + incX;
                     break;
             }
+
+            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+            screenUpdate();
         }
 
-        printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
-        printBolasT();
-        printBolasB();
-        screenUpdate();
+        if(timerTimeOver()){
+            printBolasT();
+            printBolasB();
+            screenUpdate();
+            timer++;
+
+        }
+
 
         
     }
