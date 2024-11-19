@@ -3,11 +3,11 @@
 #include "screen.h"
 #include "fases.h"
 
-
+TamanhoF fase1;
+char **matriz1;
 
 void printFase1(){
 
-    
     fase1.minY = 0;
     fase1.maxY = 16;
     fase1.minX = 0;
@@ -48,8 +48,18 @@ void printFase1(){
         }
         printf("\n");
     }
+
+    screenGotoxy(0, 16);
+
+    mortes();
+
     screenHomeCursor();
     screenHideCursor();
+    
 
 }
 
+void mortes(){
+    screenSetColor(RED, DARKGRAY);
+    printf("Mortes: 0");
+}
