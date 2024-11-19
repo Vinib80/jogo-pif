@@ -28,25 +28,31 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
 }
 
 void resetar(){
+
+    screenGotoxy(x,y);
+    printf(" ");
+    
     x = 3;
     y = 8;
 
     for(int i = 0; i < numBolasT; i++){
-        bolasTopo[i].bolaY = 1;
         screenGotoxy(bolasTopo[i].bolaX, bolasTopo[i].bolaY);
         printf(" ");
+        bolasTopo[i].bolaY = 1;
     }
     
     for(int i = 0; i < numBolasB; i++){
-        bolasBaixo[i].bolaY = 14;
         screenGotoxy(bolasBaixo[i].bolaX, bolasBaixo[i].bolaY);
         printf(" ");
+        bolasBaixo[i].bolaY = 14;
     }
 
-    printHello(x, y, fase1.minX, fase1.maxX, matriz1);
+    screenGotoxy(x,y);
+    printf("■");
     printBolasT();
     printBolasB();
     cont_mortes++;
+    mortes(cont_mortes);
 }
 
 int colisao(){
@@ -72,7 +78,7 @@ int main() {
     static long timer = 0;
 
     printFase1();
-    mortes();
+    mortes(cont_mortes);
     posicaoBolasT();
     posicaoBolasB();
     screenUpdate();
@@ -86,7 +92,7 @@ int main() {
     int fim = 0;
 
 
-    while(ch != 10 && timer <= 100){
+    while(ch != 10){
         nextX = x;
         nextY = y;
 
@@ -115,6 +121,11 @@ int main() {
             }
 
             printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+            if(colisao()){
+                resetar();
+                screenUpdate();
+                continue;
+            }
             if (nextX == 79 && (nextY >= 6 && nextY <= 9)) {
                 screenGotoxy(x, y);
                 fim = 1;

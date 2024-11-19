@@ -56,8 +56,8 @@ void printFase1(){
 
 }
 
-void mortes(){
+void mortes(int mortes){
     screenGotoxy(0, 16);
     screenSetColor(RED, DARKGRAY);
-    printf("Mortes: 0");
+    printf("Mortes: %d", mortes);
 }
