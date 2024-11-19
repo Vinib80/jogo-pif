@@ -20,5 +20,9 @@ extern char **matriz1;
 
 
 void printFase1();
+void mortes();
+
 
 #endif 
+
+
