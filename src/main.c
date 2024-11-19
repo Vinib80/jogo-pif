@@ -23,13 +23,7 @@ void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
         printf("■");
 
         //coordenadas
-        if (x == 79 && (y >= 6 && y <= 9)) {
-            screenGotoxy(x, y);
-            printf("Parabéns!\n");
-
-            //chama a função de fase2.c
-            inicioFase2();
-        }
+        
     }
 }
 int main() {
@@ -48,12 +42,16 @@ int main() {
     printBolasT();
     printBolasB();
     screenUpdate();
+    int fim = 0;
 
 
     while(ch != 10 && timer <= 100){
         nextX = x;
         nextY = y;
 
+        if(fim == 1){
+            break;
+        }
         if(keyhit()){
             ch = getchar();
 
@@ -76,19 +74,31 @@ int main() {
             }
 
             printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+            if (nextX == 79 && (nextY >= 6 && nextY <= 9)) {
+                screenGotoxy(x, y);
+                fim = 1;
+
+            }
+            
             screenUpdate();
         }
 
-        if(timerTimeOver()){
+        if(timerTimeOver() == 1){
+            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
             printBolasT();
             printBolasB();
             screenUpdate();
             timer++;
 
         }
-
-
         
+    }
+    inicioFase2();
+
+    while(ch != 10){
+        if(keyhit()){
+            ch = readch();
+        }
     }
 
     for(int i = 0; i < fase1.maxY; i++){
