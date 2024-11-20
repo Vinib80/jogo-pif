@@ -7,7 +7,11 @@
 
 struct jogadores *ptr = NULL;
 
-void ordem(struct jogadores jogador[], int count){
+void ordem(struct jogadores jogador[], char nome[], int count) {
+    strcpy(jogador[count].apelido, nome);
+    jogador[count].mortes = cont_mortes;  // Aqui você usa a variável cont_mortes diretamente
+
+    // Ordenação
     for (int i = 0; i < count - 1; i++) {
         int menor_indice = i;
         for (int j = i + 1; j < count; j++) {
@@ -23,6 +27,8 @@ void ordem(struct jogadores jogador[], int count){
     }
 }
 
+
+
 void escrever(struct jogadores jogador[], int count, const char *nome_arquivo) {
     FILE *arquivo = fopen(nome_arquivo, "w");
     if (arquivo == NULL) {
@@ -36,6 +42,7 @@ void escrever(struct jogadores jogador[], int count, const char *nome_arquivo) {
 
     fclose(arquivo);
 }
+
 
 void exibir(const char *nome_arquivo) {
     FILE *arquivo = fopen(nome_arquivo, "r");
@@ -53,14 +60,14 @@ void exibir(const char *nome_arquivo) {
     fclose(arquivo);
 }
 
-void telaNome(char *nomeJogador) {
+/*void telaNome(char *nomeJogador) {
     screenClear();
     screenSetColor(WHITE, BLACK);
     screenGotoxy(10, 5);
     printf("Digite seu nome: ");
     screenGotoxy(10 + strlen(nomeJogador), 5);
     printf("%s", nomeJogador);
-}
+}*/
 
 void telaTop3() {
     screenClear();

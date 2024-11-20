@@ -11,8 +11,9 @@
 
 int x = 3, y = 8;
 int incX = 1, incY = 1;
-int cont_mortes = 0;
 const char *nome_arquivo = "top_score.txt";
+int cont_mortes = 0;
+
 
 void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
@@ -155,20 +156,18 @@ int main() {
         }
         
     }
-    inicioFase2();
+    screenClear();
+    screenGotoxy(0,0);
+    screenShowCursor();
+    char nome[50];
+    printf("Digite seu nome: ");
+    fgets(nome, sizeof(nome), stdin);  // Usando fgets para capturar a entrada corretamente
+    nome[strcspn(nome, "\n")] = 0;
 
-    while(ch != 10){
-        if(keyhit()){
-            ch = readch();
-        }
-    }
+    ordem(jogador, nome, count);
 
-    telaNome(nomeJogador);
-    while(ch != 10){
-        if(keyhit()){
-            ch = readch();
-        }
-    }
+    escrever(jogador, count, "top_score.txt");
+
 
     telaTop3();
     while(ch != 10){

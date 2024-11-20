@@ -10,10 +10,11 @@ struct jogadores {
 
 extern struct jogadores *ptr;
 
-void ordem(struct jogadores jogador[], int count);
+extern int cont_mortes;
+
+void ordem(struct jogadores jogador[], char nome[], int count);
 void escrever(struct jogadores jogador[], int count, const char *nome_arquivo);
 void exibir(const char *nome_arquivo);
-void telaNome(char *nomeJogador);
 void telaTop3();
 
 #endif
