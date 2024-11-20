@@ -1,1 +1,1 @@
-![Texto Alternativo](assets/imagem_para_o_readme.webp)
+![Texto Alternativo](assets/imagem para o readme.webp)
