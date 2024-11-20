@@ -3,10 +3,4 @@
 1. Clone o repositório:
    
    ```markdown
-   ```c
-   #include <stdio.h>
-   
-   int main() {
-       printf("Olá, mundo!");
-       return 0;
-   }
+   https://github.com/Vinib80/jogo-pif.git
