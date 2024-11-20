@@ -7,11 +7,12 @@
 #include "fases.h"
 #include "balls.h"
 #include "fase2.h"
+#include "score.h"
 
 int x = 3, y = 8;
 int incX = 1, incY = 1;
 int cont_mortes = 0;
-
+const char *nome_arquivo = "top_score.txt";
 
 void printHello(int nextX, int nextY, int minX, int maxX, char **matriz){
     if (matriz[nextY][nextX] != '#' && nextX > minX && nextX < maxX) {
@@ -77,6 +78,9 @@ int main() {
     static int ch = 0;
     static long timer = 0;
 
+    struct jogadores jogador[999];
+    int count = 0;
+    
     printFase1();
     mortes(cont_mortes);
     posicaoBolasT();

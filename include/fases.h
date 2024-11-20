@@ -10,13 +10,9 @@ typedef struct {
     int maxX;
 }TamanhoF;
 
-/*#define MIN_Y  0
-#define MAX_Y  16
-#define MIN_X  0
-#define MAX_X  80*/
-
 extern TamanhoF fase1;
 extern char **matriz1;
+extern int cont_mortes;
 
 
 void printFase1();
