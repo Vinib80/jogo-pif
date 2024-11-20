@@ -1,5 +1,5 @@
 # O Jogo Mais Difícil do Mundo
-## Como rodar:
+## ⚙ Como rodar:
 1. Clone o repositório:
    
    ```markdown
@@ -14,7 +14,7 @@
       ```markdown
       make run
 
-## Como jogar:
+## 🎮 Como jogar:
 O objetivo é atravessar o cenário sem encostar nos obstáculos, que são as 
 bolinhas
 
