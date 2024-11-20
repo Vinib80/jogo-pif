@@ -13,4 +13,14 @@
       ```
       ```markdown
       make run
+
+## Como jogar:
+O objetivo é atravessar o cenário sem encostar nos obstáculos, que são as 
+bolinhas
+
+* Use w para se mover para cima
+* Use s para se mover para baixo
+* Use a para se mover para a esquerda
+* Use d para se mover para a direita
+  
    
