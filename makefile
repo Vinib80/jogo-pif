@@ -6,3 +6,7 @@ run:
 
 clean:
 	rm jogo-pif.out
+
+#Para compilar:
+#Digitar make e apertar enter;
+#Digitar make run e apertar enter'''
