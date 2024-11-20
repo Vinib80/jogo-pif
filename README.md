@@ -4,3 +4,13 @@
    
    ```markdown
    git clone https://github.com/Vinib80/jogo-pif.git
+2. Entre no repositório do projeto:
+   ```markdown
+   cd jogo-pif
+3. Execute os comandos:
+      ```markdown
+      make
+      ```
+      ```markdown
+      make run
+   
