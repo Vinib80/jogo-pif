@@ -1,20 +1,26 @@
-# cli-lib
-Command Line Interface library, for developing CLI applications and games in C. It has functions to access keyboard, screen and manage timing tasks.
+# O Jogo Mais Difícil do Mundo
+## ⚙ Como rodar:
+1. Clone o repositório:
+   
+   ```markdown
+   git clone https://github.com/Vinib80/jogo-pif.git
+2. Entre no repositório do projeto:
+   ```markdown
+   cd jogo-pif
+3. Execute os comandos:
+      ```markdown
+      make
+      ```
+      ```markdown
+      make run
 
-## Requirements
-- This library works with the follwing OS:
-   - Linux based (Ubuntu, etc)
-   - MacOS
-- It is necessary to have GCC installed.
+## 🎮 Como jogar:
+O objetivo é atravessar o cenário sem encostar nos obstáculos, que são as 
+bolinhas
 
-## Usage 
-The file `main.c` has an example of how to use the Keyboard, Screen nd Timer functions. 
-
-To build this example via command line, just switch to library root directory and type the following command:
-```
-$ gcc ./src/*.c -I./include -o cli-lib-example
-```
-
-To use this library to create your own apps, simply add source and header files to your project and compile it together with your own code, 
-replacing the main.c file to your own.
-
+* Use w para se mover para cima
+* Use s para se mover para baixo
+* Use a para se mover para a esquerda
+* Use d para se mover para a direita
+  
+   
