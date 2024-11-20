@@ -7,7 +7,7 @@
 
 struct jogadores *ptr = NULL;
 
-void ordem(struct jogadores jogador[], int count) {
+void ordem(struct jogadores jogador[], int count){
     for (int i = 0; i < count - 1; i++) {
         int menor_indice = i;
         for (int j = i + 1; j < count; j++) {
@@ -68,8 +68,7 @@ void telaTop3() {
     screenGotoxy(5, 5);
     printf("   TOP 3 JOGADORES:\n");
 
-    exibir_top3("top_score.txt");  
+    exibir("top_score.txt");  
 
     screenGotoxy(10, 15);
-    printf("Pressione Enter para voltar...");
 }

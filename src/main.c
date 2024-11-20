@@ -81,6 +81,7 @@ int main() {
     struct jogadores jogador[999];
     int count = 0;
 
+    char nomeJogador[21];
 
     printFase1();
     mortes(cont_mortes);
@@ -162,7 +163,19 @@ int main() {
         }
     }
 
-    
+    telaNome(nomeJogador);
+    while(ch != 10){
+        if(keyhit()){
+            ch = readch();
+        }
+    }
+
+    telaTop3();
+    while(ch != 10){
+        if(keyhit()){
+            ch = readch();
+        }
+    }
 
     for(int i = 0; i < fase1.maxY; i++){
         free(matriz1[i]);
