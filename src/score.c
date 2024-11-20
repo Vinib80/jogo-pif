@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "screen.h"
+#include "keyboard.h"
+#include "timer.h"
 #include "score.h"
 
 struct jogadores *ptr = NULL;
@@ -49,4 +51,25 @@ void exibir(const char *nome_arquivo) {
     }
 
     fclose(arquivo);
+}
+
+void telaNome(char *nomeJogador) {
+    screenClear();
+    screenSetColor(WHITE, BLACK);
+    screenGotoxy(10, 5);
+    printf("Digite seu nome: ");
+    screenGotoxy(10 + strlen(nomeJogador), 5);
+    printf("%s", nomeJogador);
+}
+
+void telaTop3() {
+    screenClear();
+    screenSetColor(YELLOW, BLACK);
+    screenGotoxy(5, 5);
+    printf("   TOP 3 JOGADORES:\n");
+
+    exibir_top3("top_score.txt");  
+
+    screenGotoxy(10, 15);
+    printf("Pressione Enter para voltar...");
 }

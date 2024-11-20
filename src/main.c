@@ -80,7 +80,8 @@ int main() {
 
     struct jogadores jogador[999];
     int count = 0;
-    
+
+
     printFase1();
     mortes(cont_mortes);
     posicaoBolasT();
@@ -160,6 +161,8 @@ int main() {
             ch = readch();
         }
     }
+
+    
 
     for(int i = 0; i < fase1.maxY; i++){
         free(matriz1[i]);
