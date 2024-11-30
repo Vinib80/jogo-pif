@@ -107,7 +107,7 @@ int main() {
             break;
         }
         if(keyhit()){
-            ch = getchar();
+            ch = readch();
 
             switch(ch){
                 case 119: 
@@ -143,13 +143,13 @@ int main() {
         }
 
         if(timerTimeOver() == 1){
+            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+            printBolasT();
+            printBolasB();
             if(colisao()){
                 resetar();
                 screenUpdate();
             }
-            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
-            printBolasT();
-            printBolasB();
             screenUpdate();
             timer++;
 
