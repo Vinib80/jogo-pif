@@ -77,6 +77,7 @@ int colisao(){
 
 int main() {
     while(1){
+        char nome[50];
         cont_mortes = 0;
         int nextX, nextY;
         int ch = 0;
@@ -161,9 +162,8 @@ int main() {
         screenClear();
         screenGotoxy(0,0);
         screenShowCursor();
-        char nome[50];
         printf("Digite seu nome: ");
-        fgets(nome, sizeof(nome), stdin);  // Usando fgets para capturar a entrada corretamente
+        fgets(nome, sizeof(nome), stdin);
         nome[strcspn(nome, "\n")] = 0;
 
         ordem(jogador, nome, count);
@@ -182,6 +182,7 @@ int main() {
         int encerrar;
         printf("Deseja encerrar [0] ou reiniciar o jogo [1]? ");
         scanf("%d", &encerrar);
+        char carac = getchar();
 
         if(encerrar == 0){
             break;
