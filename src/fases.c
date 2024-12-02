@@ -8,6 +8,7 @@ char **matriz1;
 
 void printFase1(){
 
+    screenSetColor(GREEN, DARKGRAY);
     fase1.minY = 0;
     fase1.maxY = 16;
     fase1.minX = 0;

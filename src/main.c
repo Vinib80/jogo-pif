@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "screen.h"
 #include "keyboard.h"
@@ -75,106 +76,123 @@ int colisao(){
 }
 
 int main() {
-    int nextX, nextY;
-    static int ch = 0;
-    static long timer = 0;
+    while(1){
+        cont_mortes = 0;
+        int nextX, nextY;
+        int ch = 0;
+        static long timer = 0;
 
-    struct jogadores jogador[999];
-    int count = 0;
-
-    char nomeJogador[21];
-
-    printFase1();
-    mortes(cont_mortes);
-    posicaoBolasT();
-    posicaoBolasB();
-    screenUpdate();
-    keyboardInit();
-    timerInit(50);
-
-    printHello(x, y, fase1.minX, fase1.maxX, matriz1);
-    printBolasT();
-    printBolasB();
-    screenUpdate();
-    int fim = 0;
+        struct jogadores jogador[999];
+        int count = 0;
 
 
-    while(ch != 10){
-        nextX = x;
-        nextY = y;
+        printFase1();
+        mortes(cont_mortes);
+        posicaoBolasT();
+        posicaoBolasB();
+        screenUpdate();
+        keyboardInit();
+        timerInit(50);
 
-        if(fim == 1){
-            break;
-        }
-        if(keyhit()){
-            ch = readch();
+        printHello(x, y, fase1.minX, fase1.maxX, matriz1);
+        printBolasT();
+        printBolasB();
+        screenUpdate();
+        int fim = 0;
 
-            switch(ch){
-                case 119: 
-                    nextY = y - incY;
-                    break;
 
-                case 115: 
-                    nextY = y + incY;
-                    break;
+        while(ch != 10){
+            nextX = x;
+            nextY = y;
 
-                case 97:
-                    nextX = x - incX;
-                    break;
-
-                case 100: 
-                    nextX = x + incX;
-                    break;
+            if(fim == 1){
+                break;
             }
+            if(keyhit()){
+                ch = readch();
 
-            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
-            if(colisao()){
-                resetar();
+                switch(ch){
+                    case 119: 
+                        nextY = y - incY;
+                        break;
+
+                    case 115: 
+                        nextY = y + incY;
+                        break;
+
+                    case 97:
+                        nextX = x - incX;
+                        break;
+
+                    case 100: 
+                        nextX = x + incX;
+                        break;
+                }
+
+                printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+                if(colisao()){
+                    resetar();
+                    screenUpdate();
+                    continue;
+                }
+                if (nextX == 79 && (nextY >= 6 && nextY <= 9)) {
+                    screenGotoxy(x, y);
+                    fim = 1;
+
+                }
+                
                 screenUpdate();
-                continue;
             }
-            if (nextX == 79 && (nextY >= 6 && nextY <= 9)) {
-                screenGotoxy(x, y);
-                fim = 1;
+
+            if(timerTimeOver() == 1){
+                printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
+                printBolasT();
+                printBolasB();
+                if(colisao()){
+                    resetar();
+                    screenUpdate();
+                }
+                screenUpdate();
+                timer++;
 
             }
             
-            screenUpdate();
         }
+        screenClear();
+        screenGotoxy(0,0);
+        screenShowCursor();
+        char nome[50];
+        printf("Digite seu nome: ");
+        fgets(nome, sizeof(nome), stdin);  // Usando fgets para capturar a entrada corretamente
+        nome[strcspn(nome, "\n")] = 0;
 
-        if(timerTimeOver() == 1){
-            printHello(nextX, nextY, fase1.minX, fase1.maxX, matriz1);
-            printBolasT();
-            printBolasB();
-            if(colisao()){
-                resetar();
-                screenUpdate();
+        ordem(jogador, nome, count);
+        count++;
+
+        escrever(jogador, count, "top_score.txt");
+
+
+        telaTop3();
+        while(ch != 10){
+            if(keyhit()){
+                ch = readch();
             }
-            screenUpdate();
-            timer++;
-
         }
+
+        int encerrar;
+        printf("Deseja encerrar [0] ou reiniciar o jogo [1]? ");
+        scanf("%d", &encerrar);
+
+        if(encerrar == 0){
+            break;
+        } else if(encerrar == 1){
+            resetar();
+            continue;
+        }
+
         
     }
-    screenClear();
-    screenGotoxy(0,0);
-    screenShowCursor();
-    char nome[50];
-    printf("Digite seu nome: ");
-    fgets(nome, sizeof(nome), stdin);  // Usando fgets para capturar a entrada corretamente
-    nome[strcspn(nome, "\n")] = 0;
 
-    ordem(jogador, nome, count);
-
-    escrever(jogador, count, "top_score.txt");
-
-
-    telaTop3();
-    while(ch != 10){
-        if(keyhit()){
-            ch = readch();
-        }
-    }
 
     for(int i = 0; i < fase1.maxY; i++){
         free(matriz1[i]);
@@ -184,6 +202,7 @@ int main() {
     keyboardDestroy();
     screenDestroy();
     timerDestroy();
+
 
     return 0;
 }
