@@ -30,7 +30,9 @@ void ordem(struct jogadores jogadores[], char nome[], int count) {
 
 
 void escrever(struct jogadores jogadores[], int count, const char *nome_arquivo) {
-    FILE *arquivo = fopen(nome_arquivo, "w");
+    
+    
+    FILE *arquivo = fopen(nome_arquivo, "a");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo\n");
         return;

@@ -1,1 +1,8 @@
-nome:  | mortes: 2
+nome: vinicius | mortes: 7
+nome: vini2 | mortes: 0
+nome: teste3 | mortes: 1
+nome: teste4 | mortes: 4
+nome: sla | mortes: 3
+nome: infinito | mortes: 0
+nome:  | mortes: 0
+nome:  | mortes: 0
