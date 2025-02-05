@@ -1,5 +1,6 @@
 # O Jogo Mais Difícil do Mundo
 ## ⚙ Como rodar:
+Obs: O repositório só funciona em Linux ou MacOS devido à biblioteca utilizada
 1. Clone o repositório:
    
    ```markdown
