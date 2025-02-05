@@ -53,3 +53,6 @@ dkms.conf
 
 # Pasta do VS Code
 .vscode
+
+#arquivo txt de ranking
+top_score.txt
